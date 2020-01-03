@@ -41,11 +41,13 @@ public static Context context;
 
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        tabLayout.addTab(tabLayout.newTab().setText("Home"));
-        tabLayout.addTab(tabLayout.newTab().setText("Arts"));
-        tabLayout.addTab(tabLayout.newTab().setText("Fashion"));
-        tabLayout.addTab(tabLayout.newTab().setText("Sports"));
-        tabLayout.addTab(tabLayout.newTab().setText("Movies"));
+        tabLayout.addTab(tabLayout.newTab().setText("أهم الأخبار"));
+        tabLayout.addTab(tabLayout.newTab().setText("الفن"));
+        tabLayout.addTab(tabLayout.newTab().setText("الرياضة"));
+        tabLayout.addTab(tabLayout.newTab().setText("التجارة والاعمال"));
+        tabLayout.addTab(tabLayout.newTab().setText("العلوم"));
+        tabLayout.addTab(tabLayout.newTab().setText("التكنولوجيا"));
+        tabLayout.addTab(tabLayout.newTab().setText("الصحة"));
 
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 

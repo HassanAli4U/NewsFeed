@@ -3,23 +3,28 @@ package com.hassan.ali.newsfeed;
 import java.io.Serializable;
 
 public class DataModel implements Serializable {
-    String imageUrl1,imageUrl4;
+    String imageUrl1;
     String title;
-    String subsection;
     String date;
     String abstractt;
-    String byLine;
     String link;
+    String author;
 
-    public DataModel(String imageUrl1, String imageUrl4, String title, String subsection, String date, String abstractt, String byLine, String link) {
+    public DataModel(String imageUrl1, String title, String date, String abstractt, String link, String author) {
         this.imageUrl1 = imageUrl1;
-        this.imageUrl4 = imageUrl4;
         this.title = title;
-        this.subsection = subsection;
         this.date = date;
         this.abstractt = abstractt;
-        this.byLine = byLine;
         this.link = link;
+        this.author = author;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     public String getImageUrl1() {
@@ -30,13 +35,7 @@ public class DataModel implements Serializable {
         this.imageUrl1 = imageUrl1;
     }
 
-    public String getImageUrl4() {
-        return imageUrl4;
-    }
 
-    public void setImageUrl4(String imageUrl4) {
-        this.imageUrl4 = imageUrl4;
-    }
 
     public String getAbstractt() {
         return abstractt;
@@ -46,13 +45,6 @@ public class DataModel implements Serializable {
         this.abstractt = abstractt;
     }
 
-    public String getByLine() {
-        return byLine;
-    }
-
-    public void setByLine(String byLine) {
-        this.byLine = byLine;
-    }
 
     public String getLink() {
         return link;
@@ -69,13 +61,6 @@ public class DataModel implements Serializable {
         this.title = title;
     }
 
-    public String getSubsection() {
-        return subsection;
-    }
-
-    public void setSubsection(String subsection) {
-        this.subsection = subsection;
-    }
 
     public String getDate() {
         return date;

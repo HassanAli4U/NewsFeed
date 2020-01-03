@@ -2,6 +2,7 @@ package com.hassan.ali.newsfeed;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -26,6 +27,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -38,7 +41,7 @@ public class HomeFragment extends Fragment {
     private ArrayList<DataModel> data;
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerView.Adapter adapter;
-    private static final String JSON_URL = "http://api.nytimes.com/svc/topstories/v2/home.json?api-key=32e97d31e3854521b35d191aaccb86ab";
+    private static final String JSON_URL = "https://newsapi.org/v2/top-headlines?country=eg&apiKey=e57fdb1d5b3048519ce529eb977cea7a";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_section, container, false);
@@ -104,19 +107,20 @@ public class HomeFragment extends Fragment {
                             JSONObject obj = new JSONObject(response);
 
 
-                            JSONArray ModelArray = obj.getJSONArray("results");
+                            JSONArray ModelArray = obj.getJSONArray("articles");
 
                             //now looping through all the elements of the json array
                             for (int i = 0; i < ModelArray.length(); i++) {
                                 //getting the json object of the particular index inside the array
                                 JSONObject modelObject = ModelArray.getJSONObject(i);
-                                JSONArray multimedia=modelObject.getJSONArray("multimedia");
-                                String imageUrl1=multimedia.getJSONObject(1).getString("url");
-                                String imageUrl4=multimedia.getJSONObject(4).getString("url");
+                                String imageUrl1= (String) modelObject.getString("urlToImage").trim();
+
+
+                                String sourceUrl= (String) modelObject.getString("url");
 
                                 String title=modelObject.getString("title");
-                                String subSection=modelObject.getString("section");
-                                String date=modelObject.getString("published_date");
+                                String description=modelObject.getString("description");
+                                String date=modelObject.getString("publishedAt");
                                 SimpleDateFormat dateFormat = new SimpleDateFormat("EEE, MMM d, ''yy");
                                 Date convertedDate = new Date();
                                 try {
@@ -126,10 +130,10 @@ public class HomeFragment extends Fragment {
                                     e.printStackTrace();
                                 }
                                 date=convertedDate.toString();
-                                String abstractt=modelObject.getString("abstract");
-                                String link=modelObject.getString("url");
-                                String byLine=modelObject.getString("byline");
-                                DataModel model = new DataModel(imageUrl1,imageUrl4,title,subSection,date,abstractt,byLine,link);
+                                String abstractt=modelObject.getString("description");
+                                JSONObject sourceObject=modelObject.getJSONObject("source");
+                                String author=sourceObject.getString("name");
+                                DataModel model = new DataModel(imageUrl1,title,date,abstractt,sourceUrl,author);
                                 data.add(model);
                                 if(i%5==0){
                                  adapter.notifyDataSetChanged();

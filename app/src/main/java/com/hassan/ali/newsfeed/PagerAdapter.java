@@ -23,14 +23,21 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
                 ArtsFragment tab2 = new ArtsFragment();
                 return tab2;
             case 2:
-                FashionFragment tab3 = new FashionFragment();
+                SportsFragment tab3 = new SportsFragment();
                 return tab3;
             case 3:
-                SportsFragment tab4 = new SportsFragment();
+                BusinessFragment tab4 = new BusinessFragment();
                 return tab4;
             case 4:
-                MoviesFragment tab5 = new MoviesFragment();
+                ScienceFragment tab5 =new ScienceFragment();
+
                 return tab5;
+            case 5:
+                TechnologyFragment tab6=new TechnologyFragment();
+                return tab6;
+            case 6:
+                HealthFragment tab7=new HealthFragment();
+                return tab7;
             default:
                 return null;
         }

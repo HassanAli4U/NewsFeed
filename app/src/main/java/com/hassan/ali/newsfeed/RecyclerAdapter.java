@@ -5,6 +5,7 @@ package com.hassan.ali.newsfeed;
  */
 
 import android.content.Context;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,8 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 
@@ -24,6 +27,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     Context mContext;
     CustomItemClickListener listener;
 
+    private static final String ALLOWED_URI_CHARS = "@#&=*+-_.,:!?()/~'%";
 
 
     @Override
@@ -43,14 +47,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     public void onBindViewHolder(ViewHolder holder, int position) {
         TextView textViewTitle = holder.textViewTitle;
         TextView textViewDate = holder.textViewDate;
-        TextView textViewSubsection = holder.textViewSubsection;
         ImageView imageView = holder.imageView;
 
-        Picasso.with(mContext).load(data.get(position).getImageUrl1()).into(imageView);
+            Picasso.with(mContext).load(data.get(position).getImageUrl1()).into(imageView);
+
+
 
 //        imageView.setImageResource(data.get(position).g));
         textViewTitle.setText(data.get(position).getTitle());
-        textViewSubsection.setText(data.get(position).getSubsection());
         textViewDate.setText(data.get(position).getDate());
     }
 
@@ -69,7 +73,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
         TextView textViewTitle;
-        TextView textViewSubsection;
         TextView textViewDate;
 
         ViewHolder(View v) {
@@ -80,11 +83,15 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             textViewDate = (TextView) v
                     .findViewById(R.id.textViewDate);
 
-            textViewSubsection = (TextView) v
-                    .findViewById(R.id.textViewSubsection);
+
 
             imageView = (ImageView) v.findViewById(R.id.imageView);
         }
     }
-
+//    public static String encodUrl(String url){
+//        String[] splitUrl = url.split("/");
+//        String imageName = splitUrl[splitUrl.length-1];//get name of file
+//        String mainUrl = url.replaceAll(imageName , "");//get url without file name bacause dont need to encode
+//        return (mainUrl + Uri.encode(imageName));
+//    }
 }
