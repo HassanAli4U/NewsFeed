@@ -39,7 +39,8 @@ public class ArtsFragment extends Fragment {
     private ArrayList<DataModel> data;
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerView.Adapter adapter;
-    private static final String JSON_URL = "https://newsapi.org/v2/top-headlines?country=eg&category=entertainment&apiKey=e57fdb1d5b3048519ce529eb977cea7a";
+    String countrystring=MainActivity.countryString;
+    private final String JSON_URL = "https://newsapi.org/v2/top-headlines?country="+countrystring+"&category=entertainment&apiKey=e57fdb1d5b3048519ce529eb977cea7a";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_section, container, false);
@@ -58,7 +59,7 @@ public class ArtsFragment extends Fragment {
 //            @Override
 //            public void onItemClick(View v, int position) {
 //                Log.d("clivk", "clicked position:" + position);
-//                Toast.makeText(getContext(), "clicked position:" + position, Toast.LENGTH_SHORT).show();            }
+//
 //        });
 //        recyclerView.setAdapter(adapter);
 
@@ -67,7 +68,7 @@ public class ArtsFragment extends Fragment {
             @Override
             public void onItemClick(View v, int position) {
                 Log.d("clivk", "clicked position:" + position);
-                Toast.makeText(getContext(), "clicked position:" + position, Toast.LENGTH_SHORT).show();
+
                 Intent intent = new Intent(getContext(), NewsDetails.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("my object", (Serializable) data.get(position));

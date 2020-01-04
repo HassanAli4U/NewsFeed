@@ -45,7 +45,7 @@ public class NewsDetails extends AppCompatActivity {
 
 
         TextView authorTextView = (TextView) findViewById(R.id.author);
-        authorTextView.setText(author+": ");
+        authorTextView.setText(author);
 
 
         TextView abstractTextView = (TextView) findViewById(R.id.abstractt);
@@ -71,5 +71,11 @@ public class NewsDetails extends AppCompatActivity {
 
     }
 
+    // Handle back button in the toolbar
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
 
 }

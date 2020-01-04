@@ -19,6 +19,7 @@ import android.view.MenuItem;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 public static Context context;
+public static String countryString="eg";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,27 +87,9 @@ public static Context context;
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
 
-        return super.onOptionsItemSelected(item);
-    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -114,18 +97,38 @@ public static Context context;
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.eg) {
 
-        } else if (id == R.id.nav_slideshow) {
+           countryString="eg";
 
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+            finish();
+            overridePendingTransition( 0, 0);
+            startActivity(getIntent());
+            overridePendingTransition( 0, 0);
+        } else if (id == R.id.sa) {
+            countryString="sa";
+            finish();
+            overridePendingTransition( 0, 0);
+            startActivity(getIntent());
+            overridePendingTransition( 0, 0);
+        } else if (id == R.id.ae) {
+            countryString="ae";
+            finish();
+            overridePendingTransition( 0, 0);
+            startActivity(getIntent());
+            overridePendingTransition( 0, 0);
+        } else if (id == R.id.ma) {
+            countryString="ma";
+            finish();
+            overridePendingTransition( 0, 0);
+            startActivity(getIntent());
+            overridePendingTransition( 0, 0);
+        } else if (id == R.id.tr) {
+            countryString="tr";
+            finish();
+            overridePendingTransition( 0, 0);
+            startActivity(getIntent());
+            overridePendingTransition( 0, 0);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -83,11 +83,10 @@
                 android:id="@+id/author"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorAccent"
-                android:text="Abstract"
-                android:layout_gravity="center"
-                android:textSize="@dimen/article_titles"
-                android:layout_marginBottom="@dimen/md_keylines" />
+                android:textColor="@color/colorgree"
+                android:layout_gravity="right"
+                android:textSize="@dimen/byLineText"
+                android:text="@string/app_name" />
 
             <TextView
                 android:id="@+id/abstractt"
