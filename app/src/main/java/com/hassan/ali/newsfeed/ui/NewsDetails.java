@@ -1,22 +1,16 @@
-package com.hassan.ali.newsfeed;
+package com.hassan.ali.newsfeed.ui;
 
-import android.content.res.Resources;
-import android.content.res.TypedArray;
-import android.graphics.Typeface;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
-import android.text.Spannable;
-import android.text.SpannableString;
 import android.text.method.LinkMovementMethod;
-import android.text.style.URLSpan;
-import android.text.util.Linkify;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.hassan.ali.newsfeed.R;
+import com.hassan.ali.newsfeed.retrofit.ArticlesResponse;
 import com.squareup.picasso.Picasso;
 
 public class NewsDetails extends AppCompatActivity {
@@ -31,12 +25,12 @@ public class NewsDetails extends AppCompatActivity {
                 (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         // Set title of Detail page
         // collapsingToolbar.setTitle(getString(R.string.item_title));
-        DataModel  model = (DataModel) getIntent().getBundleExtra("data").getSerializable("my object");
+        ArticlesResponse.ArticlesBean model = (ArticlesResponse.ArticlesBean) getIntent().getBundleExtra("data").getSerializable("my object");
 
         String title= model.getTitle();
-        String imageUrl1=model.getImageUrl1();
-        String abstractt= model.getAbstractt();
-        String link=model.getLink();
+        String imageUrl1=model.getUrlToImage();
+        String abstractt= model.getDescription();
+        String link=model.getUrl();
         String author=model.getAuthor();
 
         collapsingToolbar.setTitle(title);
@@ -48,14 +42,14 @@ public class NewsDetails extends AppCompatActivity {
         authorTextView.setText(author);
 
 
-        TextView abstractTextView = (TextView) findViewById(R.id.abstractt);
-        abstractTextView.setText(abstractt);
+        TextView descriptionTextView = (TextView) findViewById(R.id.description);
+        descriptionTextView.setText(abstractt);
 
-        TextView linkTextView =  (TextView) findViewById(R.id.link);
+        TextView urlTextView =  (TextView) findViewById(R.id.url);
         String value = "<html>لمزيد من التفاصيل اضغط <a href=\""+link+"\">هنا</a></html>";
 
-        linkTextView.setText(Html.fromHtml(value));
-        linkTextView.setMovementMethod(LinkMovementMethod.getInstance());
+        urlTextView.setText(Html.fromHtml(value));
+        urlTextView.setMovementMethod(LinkMovementMethod.getInstance());
 
 ////        "for more details, keep free and browse here"
 //linkTextView.setOnClickListener(new View.OnClickListener() {

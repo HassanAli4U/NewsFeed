@@ -1,8 +1,16 @@
-package com.hassan.ali.newsfeed;
+package com.hassan.ali.newsfeed.viewpager;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+
+import com.hassan.ali.newsfeed.ui.ArtsFragment;
+import com.hassan.ali.newsfeed.ui.BusinessFragment;
+import com.hassan.ali.newsfeed.ui.HealthFragment;
+import com.hassan.ali.newsfeed.ui.HomeFragment;
+import com.hassan.ali.newsfeed.ui.ScienceFragment;
+import com.hassan.ali.newsfeed.ui.SportsFragment;
+import com.hassan.ali.newsfeed.ui.TechnologyFragment;
 
 public class PagerAdapter extends FragmentStatePagerAdapter {
     int mNumOfTabs;

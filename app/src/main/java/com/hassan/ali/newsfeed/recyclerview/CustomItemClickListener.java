@@ -1,4 +1,4 @@
-package com.hassan.ali.newsfeed;
+package com.hassan.ali.newsfeed.recyclerview;
 
 import android.view.View;
 

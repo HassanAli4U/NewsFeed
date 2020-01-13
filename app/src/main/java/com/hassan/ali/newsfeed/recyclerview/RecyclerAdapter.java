@@ -1,11 +1,10 @@
-package com.hassan.ali.newsfeed;
+package com.hassan.ali.newsfeed.recyclerview;
 
 /**
  * Created by I Love Allah on 06/10/2018.
  */
 
 import android.content.Context;
-import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,16 +12,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.hassan.ali.newsfeed.R;
+import com.hassan.ali.newsfeed.retrofit.ArticlesResponse;
 import com.squareup.picasso.Picasso;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
+import java.util.List;
 
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
-    ArrayList<DataModel> data;
+    List<ArticlesResponse.ArticlesBean> data;
 
     Context mContext;
     CustomItemClickListener listener;
@@ -49,13 +48,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         TextView textViewDate = holder.textViewDate;
         ImageView imageView = holder.imageView;
 
-            Picasso.with(mContext).load(data.get(position).getImageUrl1()).into(imageView);
+            Picasso.with(mContext).load(data.get(position).getUrlToImage()).into(imageView);
 
 
 
 //        imageView.setImageResource(data.get(position).g));
         textViewTitle.setText(data.get(position).getTitle());
-        textViewDate.setText(data.get(position).getDate());
+        textViewDate.setText(data.get(position).getPublishedAt());
     }
 
 
@@ -64,7 +63,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         return data.size();
     }
 
-    public RecyclerAdapter(Context mContext, ArrayList<DataModel> data, CustomItemClickListener listener) {
+    public RecyclerAdapter(Context mContext, List<ArticlesResponse.ArticlesBean> data, CustomItemClickListener listener) {
         this.data = data;
         this.mContext = mContext;
         this.listener = listener;
